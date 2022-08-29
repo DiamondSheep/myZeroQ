@@ -52,6 +52,9 @@ def getRandomData(dataset='cifar10', batch_size=512, img_per_class=1, for_incept
     if dataset == 'cifar10':
         size = (3, 32, 32)
         num_data = 10 * img_per_class
+    elif dataset == 'cifar100':
+        size = (3, 32, 32)
+        num_data = 100 * img_per_class
     elif dataset == 'imagenet':
         num_data = 1000 * img_per_class
         if not for_inception:
