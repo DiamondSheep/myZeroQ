@@ -42,7 +42,7 @@ class UniformDataset(Dataset):
         return sample
 
 
-def getRandomData(dataset='cifar10', batch_size=512, for_inception=False):
+def getRandomData(dataset='cifar10', batch_size=512, img_per_class=1, for_inception=False):
     """
     get random sample dataloader 
     dataset: name of the dataset 
@@ -51,16 +51,16 @@ def getRandomData(dataset='cifar10', batch_size=512, for_inception=False):
     """
     if dataset == 'cifar10':
         size = (3, 32, 32)
-        num_data = 10000
+        num_data = 10 * img_per_class
     elif dataset == 'imagenet':
-        num_data = 10000
+        num_data = 1000 * img_per_class
         if not for_inception:
             size = (3, 224, 224)
         else:
             size = (3, 299, 299)
     else:
         raise NotImplementedError
-    dataset = UniformDataset(length=10000, size=size, transform=None)
+    dataset = UniformDataset(length=num_data, size=size, transform=None)
     data_loader = DataLoader(dataset,
                              batch_size=batch_size,
                              shuffle=False,

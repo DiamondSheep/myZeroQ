@@ -53,6 +53,7 @@ class output_hook(object):
 def getDistilData(teacher_model,
                   dataset,
                   batch_size,
+                  img_per_class,
                   num_batch=1,
                   for_inception=False):
     """
@@ -69,6 +70,7 @@ def getDistilData(teacher_model,
     # initialize distilled data with random noise according to the dataset
     dataloader = getRandomData(dataset=dataset,
                                batch_size=batch_size,
+                               img_per_class=img_per_class,
                                for_inception=for_inception)
 
     eps = 1e-6
