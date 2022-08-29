@@ -24,7 +24,7 @@ import torch
 import torch.nn as nn
 import copy
 import torch.optim as optim
-from utils import *
+from .utils import *
 
 
 def own_loss(A, B):
